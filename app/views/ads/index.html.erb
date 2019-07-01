@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1>Anúncios</h1>
 
-<h1>Ads</h1>
-
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Viewnumber</th>
-      <th>Quantity</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Viewnumber</th>
+      <th scope="col">Quantity</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,9 +20,9 @@
         <td><%= ad.price %></td>
         <td><%= ad.viewnumber %></td>
         <td><%= ad.quantity %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', ad, :class => "btn btn-outline-info" %></td>
+        <td><%= link_to 'Edit', edit_ad_path(ad), :class => "btn btn-outline-dark" %></td>
+        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Ad', new_ad_path %>
+<%= link_to 'Novo Anúncio', new_ad_path, :class =>"btn btn-outline-success" %>

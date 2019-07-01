@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AnunciosProdutos</title>
+    <title>Anuncios Produtos</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,30 @@
   </head>
 
   <body>
+    <%= render 'layouts/menu' %>
+    <div class="text-center">      
+      <% if !alert.nil? %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>        
+      <% else %>
+        <p class="" id="alert"><%= alert %></p>
+      <% end %>
+
+      <% if !notice.nil? %>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% else %>
+        <p class="" id="notice"><%= notice %></p>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

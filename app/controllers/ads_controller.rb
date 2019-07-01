@@ -1,10 +1,12 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: :homepage
+  load_and_authorize_resource :except => [:homepage]
 
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.all.order("title")
+    @ads = Ad.where(user: current_user).order("title")
   end
 
   def homepage

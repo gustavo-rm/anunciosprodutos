@@ -1,29 +1,97 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://image.flaticon.com/icons/svg/149/149452.svg" alt="" width="72" height="72">
+    <h2>Cadastro</h2>
+    <p class="lead"></p>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h4 class="mb-3">Informações de Acesso</h4>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "needs-validation"}) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="mb-3">
+          <%= f.label :email %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">@</span>
+            </div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control", :placeholder => "usuario@exemplo.com"  %>
+            <div class="invalid-feedback" style="width: 100%;">
+              O endereço de email é obrigatório.
+            </div>
+          </div>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <div class="mb-3">
+        <%= f.label :name %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+          </div>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control", :placeholder => "Nome Sobrenome"  %>
+          <div class="invalid-feedback" style="width: 100%;">
+            O nome completo é obrigatório.
+          </div>
+        </div>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="mb-3">
+        <%= f.label :address %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+          </div>
+          <%= f.text_field :address, autofocus: true, autocomplete: "address", :class => "form-control", :placeholder => "Rua exemplo, n° 0 - Centro"  %>
+          <div class="invalid-feedback" style="width: 100%;">
+            O endereço é obrigatório.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :phone %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+          </div>
+          <%= f.text_field :phone, autofocus: true, autocomplete: "phone", :class => "form-control", :placeholder => "(00)99999-9999"  %>
+          <div class="invalid-feedback" style="width: 100%;">
+            O telefone é obrigatório.
+          </div>
+        </div>
+      </div>
+
+        <div class="mb-3">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+          <div class="input-group">
+            <%= f.password_field :password, autocomplete: "new-password", :class => "form-control", :placeholder => "Uma senha forte contém letras, números e caracteres especiais" %>
+            <div class="invalid-feedback" style="width: 100%;">
+              A senha é obrigatória.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation %><br />
+          <div class="input-group">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", :class => "form-control", :placeholder => "Digite a mesma senha para confirmar" %>
+            <div class="invalid-feedback" style="width: 100%;">
+              As senhas não são iguais.
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Confirmar Cadastro", :class => "btn btn-outline-primary form-control" %>
+        </div>
+      <% end %>
+
+      <div style="display: inline-grid; width: 100%" class="text-center alert alert-secondary">
+      <p style="font-weight: bold; font-size: 1rem; padding-top: 0.5em;" class="">Já é cadastrado?</p>
+      <%= render "devise/shared/links" %> 
+      </div>
+    </div>
+  </div>
+</div>
