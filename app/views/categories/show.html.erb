@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="text-center">
+	<div class="card" style="display: inline-block; width: 25%;">
+	  <h5 class="card-header">Descrição</h5>
+	  <div class="card-body">
+	    <h5 class="card-title"><%= @category.description %></h5>
+	    <p class="card-text">Criado em: <%= @category.created_at %></p>
+	  </div>
+	  <div style="padding-bottom: 1em;">
+	  	<%= link_to 'Editar', edit_category_path(@category), :class =>"btn btn-outline-primary" %>
+		<%= link_to 'Voltar', categories_path, :class =>"btn btn-outline-secondary" %>
+	  </div>
+	</div>
+</div>

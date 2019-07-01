@@ -1,1 +1,44 @@
-<div>hello word</div>
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Exemplo de álbum</h1>
+      <p class="lead text-muted">Algo curto e direto, sobre a coleção abaixo (conteúdo, criador e etc). Faça com que seja curto e legal, mas não tão curto ao ponto de as pessoas pularem ele.</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Call-to-action principal</a>
+        <a href="#" class="btn btn-secondary my-2">Call-to-action secundário</a>
+      </p>
+    </div>
+  </section>
+
+    <div class="album py-5 bg-light">
+
+      <div class="row">
+        <div class="container col-md-10">
+          <% @ads.all.order(:title).each do |ad| %>
+        <div class="col-md-2" style="display: inline-block;">
+          <div class="card mb-4 shadow-sm">
+            <div class="bg-card" style="text-align: center;">
+              <h3 class="h3-border" style="color: #f2fffe; padding-top: 2em;"><%= ad.title %></h3>
+              <h4 class="h3-border" style="color: #f2fffe; padding-top: 2em;"><%= ad.description %></h4>
+            </div>
+            <div class="card-body" style="text-align: center;">
+              <p class="card-text">Fotos: </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div style="display: inline; width: 100%">
+                  <p class="bg-text" style="text-align: center;">Preço: R$ <%= ad.price %> </p>
+                  <p>Quantidade restante: <%= ad.quantity %> minutos</p>
+                  <hr>
+                  <small class="text-muted">Data: <%= ad.created_at %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+    <hr>
+</main>

@@ -11,12 +11,14 @@
     </div>
   <% end %>
 
+<div style="display: inline-block; width: 25%; padding-left: 1em;">
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <label>Descrição</label>
+    <%= form.text_field :description, :class => "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-outline-success form-control' %>
   </div>
+</div>
 <% end %>
