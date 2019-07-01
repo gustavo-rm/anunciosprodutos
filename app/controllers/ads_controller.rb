@@ -4,7 +4,11 @@ class AdsController < ApplicationController
   # GET /ads
   # GET /ads.json
   def index
-    @ads = Ad.all
+    @ads = Ad.all.order("title")
+  end
+
+  def homepage
+    @ads = Ad.all.order("title")
   end
 
   # GET /ads/1
@@ -25,6 +29,7 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
+    @ad.user = current_user
 
     respond_to do |format|
       if @ad.save
@@ -69,6 +74,6 @@ class AdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:title, :description, :price, :viewnumber, :quantity, :category_id, {photos: []})
+      params.require(:ad).permit(:title, :description, :price, :viewnumber, :quantity, :category_id, :user_id, {photos: []})
     end
 end
