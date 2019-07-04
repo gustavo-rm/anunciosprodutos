@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'homepage'
       post 'homepage'
+      get 'show_ad'
     end
 end
 root 'ads#homepage'

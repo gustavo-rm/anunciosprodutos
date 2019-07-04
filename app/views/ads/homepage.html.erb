@@ -18,16 +18,16 @@
           <% @ads.all.order(:title).each do |ad| %>
         <div class="col-md-2" style="display: inline-block;">
           <div class="card mb-4 shadow-sm">
-            <div class="bg-card" style="text-align: center;">
-              <h3 class="h3-border" style="color: #f2fffe; padding-top: 2em;"><%= ad.title %></h3>
-              <h4 class="h3-border" style="color: #f2fffe; padding-top: 2em;"><%= ad.description %></h4>
+            <div class="bg-card" style="text-align: center; background-image: url(<%= ad.photos.first.thumb.url %>); height: 13em;" >
+              <h3 class="h3-border" style="color: #f2fffe; text-shadow:0px 5px 10px #002bff; background-color: rgba(255,255,255,0.6); "><%= ad.title %></h3>
             </div>
             <div class="card-body" style="text-align: center;">
-              <p class="card-text">Fotos: </p>
+              <p class="card-text">Preço: R$ <%= ad.price %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div style="display: inline; width: 100%">
-                  <p class="bg-text" style="text-align: center;">Preço: R$ <%= ad.price %> </p>
-                  <p>Quantidade restante: <%= ad.quantity %> minutos</p>
+                  <p class="bg-text" style="text-align: center;"><%= ad.description %> </p>
+                  <p>Quantidade restante: <%= ad.quantity %></p>
+                  <%= link_to "Ver Informações", ad, class:"btn btn-primary my-2"%>
                   <hr>
                   <small class="text-muted">Data: <%= ad.created_at %></small>
                 </div>

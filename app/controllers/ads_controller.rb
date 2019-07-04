@@ -1,7 +1,7 @@
 class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: :homepage
-  load_and_authorize_resource :except => [:homepage]
+  load_and_authorize_resource :except => [:homepage, :show]
 
   # GET /ads
   # GET /ads.json
@@ -12,13 +12,20 @@ class AdsController < ApplicationController
   def homepage
     @ads = Ad.all.order("title")
     @ads = @ads.where(category_id: params[:category_id]) unless params[:category_id].blank?
-    @ads = @ads.where("LOWER(ads.title) like ? OR LOWER(ads.description) like ? ", "%#{params[:search_term].to_s.downcase}%", "%#{params[:search_term].to_s.downcase}%") unless params[:search_term].blank?
+    @ads = @ads.where("LOWER(ads.title) like ? OR LOWER(ads.description) like ? ", "%#{params[:search].to_s.downcase}%", "%#{params[:search].to_s.downcase}%") unless params[:search].blank?
     @ads = @ads.select("DISTINCT ON (ads.id, ads.title) ads.*")
+  end
+
+  def show_ad
+    @ads = Ad.find(params[:ad_id])
+    @ads = Ad.where("category_id = ?", params[:category_id])
   end
 
   # GET /ads/1
   # GET /ads/1.json
   def show
+    @ads = Ad.all.order("title")
+    @ads = @ads.where(category_id: params[:category_id]) unless params[:category_id].blank?
     if (@ad.viewnumber.nil?)
       @ad.viewnumber = 1
     else

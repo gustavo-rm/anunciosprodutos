@@ -20,9 +20,9 @@
         <td><%= ad.price %></td>
         <td><%= ad.viewnumber %></td>
         <td><%= ad.quantity %></td>
-        <td><%= link_to 'Show', ad, :class => "btn btn-outline-info" %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad), :class => "btn btn-outline-dark" %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-outline-danger" %></td>
+        <td><%= link_to 'Mostrar', ad, :class => "btn btn-outline-info" %></td>
+        <td><%= link_to 'Editar', edit_ad_path(ad), :class => "btn btn-outline-dark" %></td>
+        <td><%= link_to 'Deletar', ad, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>
