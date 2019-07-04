@@ -1,27 +1,65 @@
-<p>
-  <strong>Title:</strong>
-  <%= @ad.title %>
-</p>
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+      <!-- tittle heading -->
+      <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        <span>I</span>nformações do
+        <span>P</span>roduto</h3>
+      <!-- //tittle heading -->
+      
+      <div class="row">
+        <div class="col-lg-5 col-md-8 single-right-left ">
+          <div class="grid images_3_of_2">
+            <div class="flexslider">
+              <ul class="slides">
+                <% @ad.photos.each do |image| %>
+                  <li data-thumb="<%= image.thumb.url %>">
+                    <div class="thumb-image">
+                      <img src="<%= image.url %>" data-imagezoom="true" class="img-fluid" alt=""> 
+                    </div>
+                  </li>
+                <% end %>                
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ad.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @ad.price %>
-</p>
-
-<p>
-  <strong>Viewnumber:</strong>
-  <%= @ad.viewnumber %>
-</p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @ad.quantity %>
-</p>
-
-<%= link_to 'Edit', edit_ad_path(@ad) %> |
-<%= link_to 'Back', ads_path %>
+        <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+          <h3 class="mb-3"><%= @ad.title %></h3>
+          <p class="mb-3">
+            <span class="item_price">R$ <%= @ad.price %></span>
+            <del class="mx-2 font-weight-light">$280.00</del>
+            <label><%= @ad.quantity %> Unidades</label>
+          </p>
+          <div class="single-infoagile">
+            <%= @ad.description %>
+          </div>
+          <div class="product-single-w3l">
+            <p class="my-3">
+              <i class="far fa-hand-point-right mr-2">
+                <label>Informações do vendedor:</label>  
+              </i>
+              <p>Nome: <%= @ad.user.name %></p>
+              <p>Telefone: <%= number_to_phone(@ad.user.phone, pattern: /(\d{2})(\d{4,})(\d{4})$/, area_code: true)  %></p>
+              <p>Endereço: <%= @ad.user.address %></p>
+            </p>  
+            <p class="my-sm-4 my-3">
+              <i class="fas fa-retweet mr-3">Visualizações: </i>
+              <%= @ad.viewnumber %>
+            </p>
+          </div>
+          <div class="occasion-cart">
+            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+              <form action="#" method="post">
+                <fieldset>
+                  <input type="submit" name="submit" value="Negociar" class="button" />
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //Single Page -->
+  <!---728x90--->
