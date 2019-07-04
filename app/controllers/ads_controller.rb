@@ -10,27 +10,27 @@ class AdsController < ApplicationController
   end
 
   def homepage
-    @ads = Ad.all.order("title")
+    @ads = Ad.order(viewnumber: :desc, title: :asc)
     @ads = @ads.where(category_id: params[:category_id]) unless params[:category_id].blank?
     @ads = @ads.where("LOWER(ads.title) like ? OR LOWER(ads.description) like ? ", "%#{params[:search].to_s.downcase}%", "%#{params[:search].to_s.downcase}%") unless params[:search].blank?
-    @ads = @ads.select("DISTINCT ON (ads.id, ads.title) ads.*")
-  end
-
-  def show_ad
-    @ads = Ad.find(params[:ad_id])
-    @ads = Ad.where("category_id = ?", params[:category_id])
   end
 
   # GET /ads/1
   # GET /ads/1.json
   def show
-    @ads = Ad.all.order("title")
-    @ads = @ads.where(category_id: params[:category_id]) unless params[:category_id].blank?
-    if (@ad.viewnumber.nil?)
-      @ad.viewnumber = 1
+    category_id = @ad.category_id
+    id = @ad.id
+    @ads = Ad.order(viewnumber: :desc, title: :asc)
+    @ads = @ads.where("category_id = ? AND NOT id = ?", category_id, id) unless category_id.blank?
+    
+    viewnumber = @ad.viewnumber
+    if (viewnumber.nil?)
+      viewnumber = 1
     else
-      @ad.viewnumber = @ad.viewnumber + 1
+      viewnumber = viewnumber + 1
     end
+
+    @ad.update_attribute(:viewnumber, viewnumber)
   end
 
   # GET /ads/new
