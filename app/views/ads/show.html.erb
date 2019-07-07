@@ -27,8 +27,8 @@
         <div class="col-lg-7 single-right-left simpleCart_shelfItem">
           <h3 class="mb-3"><%= @ad.title %></h3>
           <p class="mb-3">
-            <span class="item_price">R$ <%= @ad.price %></span>
-            <del class="mx-2 font-weight-light">R$ <%= desconto @ad.price %></del>
+            <span class="item_price"><%= number_to_currency(@ad.price, unit: "R$") %></span>
+            <del class="mx-2 font-weight-light"><%= desconto @ad.price %></del>
             <label><%= @ad.quantity %> Unidades disponíveis</label>
           </p>
           <div class="single-infoagile" style="text-align: justify;">
@@ -63,8 +63,8 @@
           <div class="container py-xl-4 py-lg-2">
             <div class="row">
 
-              <% @ads.all.order(:title).each do |ad| %>
-              <div class="col-lg-6">
+              <% @ads.all.first(4).each do |ad| %>
+              <div class="col-lg-6" style="margin-bottom: 1em;">
                 <div class="join-agile text-left p-4">
                   <div class="row">
                     <div class="col-sm-7 offer-name">
@@ -87,5 +87,3 @@
       </div>
     </div>
   </div>
-  <!-- //Single Page -->
-  <!---728x90--->

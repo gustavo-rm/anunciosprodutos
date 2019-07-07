@@ -10,6 +10,6 @@ module ApplicationHelper
 	end
 
 	def desconto(valor)
-		valor * 1.2
+		number_to_currency(valor * 1.2, unit: "R$")
 	end
 end
