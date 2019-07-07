@@ -16,7 +16,7 @@
       <div class="row">
         <div class="container col-md-12">
           <% @ads.all.each do |ad| %>
-        <div class="col-md-3" style="display: inline-block;">
+        <div class="col-md-3" style="display: inline-block; width: 24.8%">
           <div class="card mb-4 shadow-sm">
             <div class="bg-card" style="text-align: center; background-image: url(<%= ad.photos.first.thumb.url %>); height: 13em; background-repeat: no-repeat; background-position: center; " >
               <h3 class="h3-border" style="color: #f2fffe; text-shadow:0px 5px 10px #002bff; background-color: rgba(255,255,255,0.6); "><%= ad.title %></h3>
