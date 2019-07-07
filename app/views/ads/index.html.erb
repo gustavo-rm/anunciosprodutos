@@ -1,13 +1,16 @@
-<h1>Anúncios</h1>
+<div class="text-center">
+  <h1>Anúncios Publicados</h1>
+</div>
 
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Viewnumber</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Título</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Visualizações</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +19,11 @@
     <% @ads.each do |ad| %>
       <tr>
         <td><%= ad.title %></td>
-        <td><%= ad.description %></td>
+        <td><%= resume ad.description %></td>
         <td><%= ad.price %></td>
-        <td><%= ad.viewnumber %></td>
         <td><%= ad.quantity %></td>
+        <td><%= ad.category.description %></td>
+        <td><%= ad.viewnumber %></td>
         <td><%= link_to 'Mostrar', ad, :class => "btn btn-outline-info" %></td>
         <td><%= link_to 'Editar', edit_ad_path(ad), :class => "btn btn-outline-dark" %></td>
         <td><%= link_to 'Deletar', ad, method: :delete, data: { confirm: 'Tem certeza que deseja excluir?' }, :class => "btn btn-outline-danger" %></td>

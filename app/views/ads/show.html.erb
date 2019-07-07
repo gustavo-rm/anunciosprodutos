@@ -28,10 +28,10 @@
           <h3 class="mb-3"><%= @ad.title %></h3>
           <p class="mb-3">
             <span class="item_price">R$ <%= @ad.price %></span>
-            <del class="mx-2 font-weight-light">$280.00</del>
-            <label><%= @ad.quantity %> Unidades</label>
+            <del class="mx-2 font-weight-light">R$ <%= desconto @ad.price %></del>
+            <label><%= @ad.quantity %> Unidades disponíveis</label>
           </p>
-          <div class="single-infoagile">
+          <div class="single-infoagile" style="text-align: justify;">
             <%= @ad.description %>
           </div>
           <div class="product-single-w3l">
@@ -39,9 +39,9 @@
               <i class="far fa-hand-point-right mr-2">
                 <label>Informações do vendedor:</label>  
               </i>
-              <p>Nome: <%= @ad.user.name %></p>
-              <p>Telefone: <%= number_to_phone(@ad.user.phone, pattern: /(\d{2})(\d{4,})(\d{4})$/, area_code: true)  %></p>
-              <p>Endereço: <%= @ad.user.address %></p>
+              <p><strong>Nome: </strong><%= @ad.user.name %></p>
+              <p><strong>Telefone: </strong> <%= number_to_phone(@ad.user.phone, pattern: /(\d{2})(\d{4,})(\d{4})$/, area_code: true)  %></p>
+              <p><strong>Endereço: </strong><%= @ad.user.address %></p>
             </p>  
             <p class="my-sm-4 my-3">
               <i class="fas fa-retweet mr-3">Visualizações: </i>
@@ -50,7 +50,7 @@
           </div>
           <div class="occasion-cart">
             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-              <a href="mailto:<%= @ad.user.email %>" class="btn button btn-primary" role="button">Negociar</a>
+              <a href="mailto:<%= @ad.user.email %>" class="btn btn-primary form-control" role="button">Negociar</a>
             </div>
           </div>
         </div>

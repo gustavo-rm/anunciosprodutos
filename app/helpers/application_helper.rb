@@ -4,4 +4,12 @@ module ApplicationHelper
 			link_to description, path, class: "nav-link"
 		end
 	end
+
+	def resume(text)
+		truncate(text, length: 300)
+	end
+
+	def desconto(valor)
+		valor * 1.2
+	end
 end
